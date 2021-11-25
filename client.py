@@ -129,16 +129,17 @@ def main():
     pairlist = pull_from_server ()
     
     print ()
-    print ("Please enter the index number of the file you wish to download!\n")
+    print ("Please enter the index number of the file you wish to download!")
     fileindex = int(input())
     
     dest_ip = pairlist [fileindex - 1][0]
     filename = pairlist [fileindex - 1][1]
     
-    print ("You are asking for file: " + filename + " from IP address: " + dest_ip + ". Correct? (Y/n)\n")
+    print ()
+    print ("You are asking for file: " + filename + " from IP address: " + dest_ip + ". Correct? (Y/n)")
     proceed = input()
     
-    if proceed == 'n' or 'N':
+    if proceed == 'n' or proceed == 'N':
         print("Program terminating...")
         exit()
         
@@ -148,27 +149,33 @@ def main():
     PORT = 44444        # The port used by the server
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.settimeout(3)
         s.connect((HOST, PORT))
         
-        # c, addr = s.accept()     # Establish connection with client.
-        # print ('Got connection from', addr)
+        print ()
+        print ("Connected successfully")
         
-        s.sendall(bytes("request" + dest_ip + " " + filename, 'utf-8'))
+        s.sendall(bytes("request " + dest_ip + " " + filename, 'utf-8'))
         
         print()
         print("Request for file successfully sent!")
-        
-        # print ('Got connection from', addr)
-        print ("Receiving...")
+
         file_recv = s.recv(1024)
-        while (file_recv):
-            print ("Receiving...")
+        
+        while True:
+            print ("Receiving")
             fin.write(file_recv)
-            file_recv = s.recv(1024)
+            try:
+                file_recv = s.recv(1024)
+            except:
+                print("All bytes received")
+                break
             
     fin.close()
     
-    print ("Successfully downloaded file: " + filename)
+    print ()
+    print ("Successfully downloaded file: " + filename + " !")
+    print ()
         
 
 if __name__ == "__main__":
