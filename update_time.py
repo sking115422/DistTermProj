@@ -3,17 +3,13 @@
 from datetime import datetime as dt
 import time as t
 import mysql.connector
-import argparse
 
 
-#Argparse is used here to reading command line arguments
-parser = argparse.ArgumentParser(description='To read in machine IP')
 
-parser.add_argument('-ip', action='store', dest='M_IP', type=str, required=False, help='IP address that needs to be updated')
+with open('machine_ip.txt') as f:
+    machine_ip = str(f.readlines()[0])
 
-args = parser.parse_args()
-
-machine_ip = args.M_IP
+print (machine_ip)
 
 db = mysql.connector.connect(
     host='173.230.133.41',
@@ -21,16 +17,15 @@ db = mysql.connector.connect(
     password=''
 )
 
-print ()
-print (db)
-
 mycursor = db.cursor()
+
+print ("update_time.py is running")
 
 while True:
     
     now = None
     now = dt.now()
-    now = str (now)
+    now = now.strftime("%m/%d/%Y, %H:%M:%S")
     
     mycursor.execute ("USE CDS;")
     
@@ -43,5 +38,5 @@ while True:
     
     db.commit()
     
-    t.sleep(60)
+    t.sleep(15)
 
