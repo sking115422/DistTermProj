@@ -124,8 +124,6 @@ def delete_files ():
 
 def main():
     
-    delete_files()
-    push_to_server ()
     pairlist = pull_from_server ()
     
     print ()
