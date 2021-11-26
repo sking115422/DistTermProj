@@ -1,5 +1,6 @@
 
 import socket
+import os
 
 
 try:
@@ -12,6 +13,11 @@ try:
 except:
     print ()
     print("Unable to get Hostname and IP")
+    
+    
+
+    
+os.system ("python3 update_time.py -ip " + host_ip)
 
 
 

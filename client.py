@@ -94,11 +94,11 @@ def pull_from_server ():
     count = 0
     for row in result:
         pair = []
-        pair = [row[0], row[1]]
+        pair = [row[1], row[2]]
         pairlist.append(pair)
         count = count + 1
         
-        print(str(count) + ')   Machine IP Address:   ', row[0] + '      File Name:   ' + row[1])
+        print(str(count) + ')   Machine IP Address:   ', row[1] + '      File Name:   ' + row[2])
         
     return pairlist
 
@@ -176,7 +176,6 @@ def main():
     print ()
     print ("Successfully downloaded file: " + filename + " !")
     print ()
-        
 
 if __name__ == "__main__":
     main()
