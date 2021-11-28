@@ -29,8 +29,8 @@ def get_local_ip():
         host_name = socket.gethostname()
         host_ip = socket.gethostbyname(host_name)
         print()
-        print("Hostname :  ",host_name)
-        print("IP : ",host_ip)
+        print("Hostname :  ", host_name)
+        print("IP : ", host_ip)
     except:
         print("Unable to get Hostname and IP")
         
