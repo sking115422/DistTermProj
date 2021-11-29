@@ -9,8 +9,6 @@ t.sleep (3)
 with open('machine_ip.txt') as f:
     machine_ip = str(f.readlines()[0])
 
-print (machine_ip)
-
 db = mysql.connector.connect(
     host='173.230.133.41',
     user='user',
