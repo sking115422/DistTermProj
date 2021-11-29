@@ -25,17 +25,54 @@ def connect_to_db ():
 #Function to return the local IP and hostname
 
 def get_local_ip():
+    
+    # For broadcast IP if avaliable/necessary
+    
+    try:
+    
+        os.system("hostname -I > localip_vm.txt ")
+        
+        with open('localip_vm.txt') as f:
+        
+            tmp = str(f.readlines()[0])
+
+        f.close()
+
+        os.system("rm localip_vm.txt")
+
+        tmplist = tmp.split(" ")
+
+        for each in tmplist:
+            
+            if each [0:3] == '172':    
+                local_ip_vm = each   
+    
+    except:
+        
+        print("hostname -I command not avaliable for this OS") 
+    
+        
+    #For get IP associated with hostname 
+    
     try:
         host_name = socket.gethostname()
         host_ip = socket.gethostbyname(host_name)
-        print()
-        print("Hostname :  ",host_name)
-        print("IP : ",host_ip)
     except:
         print("Unable to get Hostname and IP")
         
-    return host_ip, host_name
+        
+    if local_ip_vm != None:
+        host = local_ip_vm
+    else:
+        host = host_ip
+    
+    print()
+    print("Machine Info: (" + host_name + ")   " + host)
+    print()
+        
+    return host, host_name
 
+        
 
 #Function to return all files names in DistShared folder
 
@@ -120,11 +157,11 @@ def delete_files ():
     
 def main ():
     
-    host_ip, host_name = get_local_ip()
-    
     delete_files()
     push_to_server ()
-
+    
+    host_ip, host_name = get_local_ip()
+        
     filepath = 'machine_ip.txt'
 
     if os.path.exists(filepath):
@@ -132,9 +169,9 @@ def main ():
         os.system("rm " + filepath)
         
     with open(filepath, 'w') as f:
-        f.write(host_ip)
-
-    HOST = host_ip  # Host broadcast IP
+        f.write(host_ip)       
+        
+    HOST = host_ip # Host broadcast IP
     PORT = 44444        # Port to listen on (non-privileged ports are > 1023)
 
     while True:
