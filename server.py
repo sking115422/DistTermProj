@@ -28,6 +28,8 @@ def get_local_ip():
     
     # For broadcast IP if avaliable/necessary
     
+    local_ip_vm = None
+    
     try:
     
         os.system("hostname -I > localip_vm.txt ")
