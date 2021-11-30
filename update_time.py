@@ -25,7 +25,7 @@ while True:
     now = None
     tz = timezone('EST')
     now = dt.now(tz)
-    now = now.strftime("%Y-%m-%d %H:%M%S.%f")
+    now = now.strftime("%Y-%m-%d %H:%M:%S.%f")
     
     mycursor.execute ("USE CDS;")
     
