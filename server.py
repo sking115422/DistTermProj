@@ -26,19 +26,21 @@ def connect_to_db ():
 
 def get_local_ip():
     
+    local_ip_vm = None
+    
     # For broadcast IP if avaliable/necessary
     
     try:
     
-        os.system("hostname -I > localip_vm.txt ")
+        os.system("hostname -I > machine_ip.txt ")
         
-        with open('localip_vm.txt') as f:
+        with open('machine_ip.txt') as f:
         
             tmp = str(f.readlines()[0])
 
         f.close()
 
-        os.system("rm localip_vm.txt")
+        os.system("rm machine_ip.txt")
 
         tmplist = tmp.split(" ")
 
@@ -167,6 +169,8 @@ def main ():
     if os.path.exists(filepath):
         
         os.system("rm " + filepath)
+        
+    os.system("touch " + filepath)
         
     with open(filepath, 'w') as f:
         f.write(host_ip)       
