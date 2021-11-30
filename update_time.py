@@ -3,6 +3,7 @@
 from datetime import datetime as dt
 import time as t
 import mysql.connector
+from pytz import timezone
 
 t.sleep (3)
 
@@ -22,8 +23,9 @@ print ("update_time.py is running")
 while True:
     
     now = None
-    now = dt.now()
-    now = now.strftime("%m/%d/%Y %H:%M:%S")
+    tz = timezone('EST')
+    now = dt.now(tz)
+    now = now.strftime("%Y-%m-%d %H:%M:%S.%f")
     
     mycursor.execute ("USE CDS;")
     
