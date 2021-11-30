@@ -4,12 +4,10 @@ from datetime import datetime as dt
 import time as t
 import mysql.connector
 
-
+t.sleep (3)
 
 with open('machine_ip.txt') as f:
     machine_ip = str(f.readlines()[0])
-
-print (machine_ip)
 
 db = mysql.connector.connect(
     host='173.230.133.41',
@@ -25,12 +23,12 @@ while True:
     
     now = None
     now = dt.now()
-    now = now.strftime("%m/%d/%Y, %H:%M:%S")
+    now = now.strftime("%m/%d/%Y %H:%M:%S")
     
     mycursor.execute ("USE CDS;")
     
     cmd = "UPDATE peer_list SET time_stamp = '" + now +  "' WHERE IP = '" + machine_ip + "';"
-    print (cmd)
+    # print (cmd)
     
     mycursor.execute (cmd)
     
@@ -39,4 +37,3 @@ while True:
     db.commit()
     
     t.sleep(15)
-
