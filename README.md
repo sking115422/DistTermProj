@@ -67,7 +67,7 @@ Instructions for WINDOWS machines:
 
 2. in the "DistTermProj" directory, create 2 folders called "DistShared" and "Downloads"
 
-3. upload files you wish to share into the "DistShared" file you just made 
+3. upload any local files you wish to share into the "DistShared" folder you just made 
 
 4. use powershell to run the following commands
 
