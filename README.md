@@ -8,23 +8,27 @@ Instructions for LINUX and MAC machines:
 
 1. clone this repo to desired directory
 
-2. in the "DistTermProj" directory, create 2 folders called "DistShared" and "Downloads"
+2. open repository in terminal or IDE
 
-3. upload any local files you wish to share into the "DistShared" folder you just made 
+2. cd into "DistTermProj/src"
 
-4. cd into "DistTermProj/src"
+3. run "chmod +x setup.sh" - this changes permissions so we can run setup.sh 
 
-5. run "chmod +x setup.sh" - this changes permissions so we can run setup.sh 
+4. run "./setup.sh" - this will setup virtual environment and install depenedencies
 
-6. run "./setup.sh" - this will setup virtual environment and install depenedencies
+5. Add files from your local machine into the newly created DistShared folder
 
 7. run "chmod +x run_server.sh" - this changes permissions so we can run run_server.sh
 
 8. run "./run_server.sh" - in the background, this starts the server on your machine and starts updating time stamp on the central server so it will know you are still active and online
 
-9. run "python client.py" - this allows you to request files from other nodes 
+9. If necessary, begin second terminal instance, else skip to step 11
 
-10. check "Downloads" directory to find you downloaded files 
+10. cd into "DistTermProj/src" in new terminal
+
+11. run "python3 client.py" - this allows you to request files from other nodes 
+
+12. check "Downloads" directory to find you downloaded files 
 
 
 NOTE: If you have to restart the server, you may get an error saying that process is already running. If this happens, do the following:
