@@ -1,21 +1,23 @@
 # SBC Semi-Distributed Peer-to-Peer File Transfer
 
-## Notes
+Please refer to the windows (master) branch for more information. Here were we will only go over how to run the project since it is different with linux/mac machines. 
 
-* DistShared file needs to be placed in same file as the master folder for this code. 
+## Running SBCFTP
 
-* Downloads file need to be placed in the same fle as the master folder for this code. 
+Instructions for LINUX and MAC machines:
 
-* Start by running the run_server.sh file. The will set up the server on your machine
+1. clone this repo to desired directory
 
-* Run client.py when you want to download a file.
+2. in the "DistTermProj" directory, create 2 files called "DistShared" and "Downloads"
 
-* SQL command to create new table in the database
-USE CDS;
-create table peer_list(
-   ID INT NOT NULL AUTO_INCREMENT,
-   IP VARCHAR(20) NOT NULL,
-   filename VARCHAR(250) NOT NULL,
-   time_stamp VARCHAR (250),
-   PRIMARY KEY ( ID )
-);
+3. upload files you wish to share into the "DistShared" file you just made 
+
+4. cd into "DistTermProj/src"
+
+5. run "./setup.sh" - this will setup virtual environment and install depenedencies
+
+6. run "./run_server.sh" - this starts the server on your machine and starts updating time stamp on the central server so it will know you are still active and online
+
+8. run "python client.py" - this allows you to request files from other nodes 
+
+9. check "Downloads" directory to find you downloaded files 
