@@ -65,7 +65,7 @@ Instructions for WINDOWS machines:
 
 1. clone this repo to desired directory
 
-2. in the "DistTermProj" directory, create 2 files called "DistShared" and "Downloads"
+2. in the "DistTermProj" directory, create 2 folders called "DistShared" and "Downloads"
 
 3. upload files you wish to share into the "DistShared" file you just made 
 
