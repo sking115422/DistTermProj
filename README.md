@@ -86,7 +86,7 @@ NOTE: If you have to restart the server, you may get an error saying that proces
 
 1. in powershell, run "Get-Process | where ProcessName -Match python" - this will show you all python processes currently running
 
-2. run "kill <\process id>" - this kills the specified process
+2. run "kill \<process id\>" - this kills the specified process
 
 
 ## Notes
