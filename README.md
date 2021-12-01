@@ -65,21 +65,19 @@ Instructions for WINDOWS machines:
 
 1. clone this repo to desired directory
 
-2. in the "DistTermProj" directory, create 2 folders called "DistShared" and "Downloads"
+2. open the repository in powershell or in an IDE
 
-3. upload any local files you wish to share into the "DistShared" folder you just made 
+3. cd into "DistTermProj/src"
 
-4. use powershell to run the following commands
+4. run "./setup.bat" - this will setup virtual environment and install depenedencies 
 
-5. cd into "DistTermProj/src"
+5. upload any local files you wish to share into the "DistShared" folder (This folder will be in DistTermProj directory one step above "src")
 
-6. run "./setup.bat" - this will setup virtual environment and install depenedencies
+6. run "./run_server.bat" - in other powershell windows, this starts the server on your machine and starts updating time stamp on the central server so it will know you are still active and online
 
-7. run "./run_server.bat" - in other powershells, this starts the server on your machine and starts updating time stamp on the central server so it will know you are still active and online
+7. run "python client.py" - this allows you to request files from other nodes 
 
-8. run "python client.py" - this allows you to request files from other nodes 
-
-9. check "Downloads" directory to find you downloaded files 
+8. check "Downloads" directory to find you downloaded files 
 
 
 NOTE: If you have to restart the server, you may get an error saying that process is already running. If this happens, do the following:
