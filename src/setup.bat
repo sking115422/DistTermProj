@@ -1,5 +1,9 @@
 rm -r venv
 
+mkdir .\..\DistShared
+
+mkdir .\..\Downloads
+
 pip install virtualenv
 
 virtualenv venv
