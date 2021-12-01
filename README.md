@@ -69,17 +69,19 @@ Instructions for WINDOWS machines:
 
 3. upload files you wish to share into the "DistShared" file you just made 
 
-4. cd into "DistTermProj/src"
+4. use powershell to run the following commands
 
-5. run "./setup.bat" - this will setup virtual environment and install depenedencies
+5. cd into "DistTermProj/src"
 
-6. run "python server.py" - this starts the server on your machine
+6. run "./setup.bat" - this will setup virtual environment and install depenedencies
 
-7. run "python update_time.py" - this starts updating time stamp on the central server so it will know you are still active and online
+7. run "python server.py" - this starts the server on your machine
 
-8. run "python client.py" - this allows you to request files from other nodes 
+8. run "python update_time.py" - this starts updating time stamp on the central server so it will know you are still active and online
 
-9. check "Downloads" directory to find you downloaded files 
+9. run "python client.py" - this allows you to request files from other nodes 
+
+10. check "Downloads" directory to find you downloaded files 
 
 
 
