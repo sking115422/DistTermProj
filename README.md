@@ -77,11 +77,9 @@ Instructions for WINDOWS machines:
 
 7. run "./run_server.bat" - in other powershells, this starts the server on your machine and starts updating time stamp on the central server so it will know you are still active and online
 
-8. run "python update_time.py" - this starts updating time stamp on the central server so it will know you are still active and online
+8. run "python client.py" - this allows you to request files from other nodes 
 
-9. run "python client.py" - this allows you to request files from other nodes 
-
-10. check "Downloads" directory to find you downloaded files 
+9. check "Downloads" directory to find you downloaded files 
 
 
 NOTE: If you have to restart the server, you may get an error saying that process is already running. If this happens, do the following:
