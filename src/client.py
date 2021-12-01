@@ -42,7 +42,7 @@ def get_local_ip():
 
 def get_files():
     
-    files = os.listdir('DistShared')
+    files = os.listdir('../DistShared')
     
     print()
     print("Files From Share Drive:")
@@ -141,7 +141,7 @@ def main():
         print("Program terminating...")
         exit()
         
-    fin = open("./Downloads/" + filename, "wb")
+    fin = open("../Downloads/" + filename, "wb")
         
     HOST = dest_ip  # The server's hostname or IP address
     PORT = 44444        # The port used by the server

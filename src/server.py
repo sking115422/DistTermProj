@@ -80,7 +80,7 @@ def get_local_ip():
 
 def get_files():
     
-    files = os.listdir('DistShared')
+    files = os.listdir('../DistShared')
     
     print()
     print("Files From Share Drive:")
@@ -220,7 +220,7 @@ def main ():
                             machine_ip = data_list[1]
                             file_to_send = data_list[2]
                     
-                        fo = open('./DistShared/' + file_to_send, 'rb')
+                        fo = open('../DistShared/' + file_to_send, 'rb')
                         
                         buf = fo.read(1024)
 
