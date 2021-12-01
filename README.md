@@ -85,3 +85,5 @@ Instructions for WINDOWS machines:
 
 ## Notes
 
+* Please feel free to take this code and make it your own. This is just a starting place and many improvements could be made to make this a much more robust implementation of the more general SBCFTP protocol. 
+* Sometimes the machine running this code will return a different default IP that is different than the actual IP associate with the network card you are transfering data on. For example, it may not pick up the right IP and fail if you are using a laptop that is connected with a WIFI and Ethernet. My recommendation is to just use WIFI connections if you have the option. 
