@@ -69,18 +69,24 @@ Instructions for WINDOWS machines:
 
 3. upload files you wish to share into the "DistShared" file you just made 
 
-4. cd into "DistTermProj/src"
+4. open powershell terminal
 
-5. run "./setup.bat" - this will setup virtual environment and install depenedencies
+5. cd into "DistTermProj/src"
 
-6. run "python server.py" - this starts the server on your machine
+6. run "./setup.bat" - this will setup virtual environment and install depenedencies
 
-7. run "python update_time.py" - this starts updating time stamp on the central server so it will know you are still active and online
+7. run "./run_server.bat" - in other powershells, this starts the server on your machine and starts updating time stamp on the central server so it will know you are still active and online
 
 8. run "python client.py" - this allows you to request files from other nodes 
 
 9. check "Downloads" directory to find you downloaded files 
 
+
+NOTE: If you have to restart the server, you may get an error saying that process is already running. If this happens, do the following:
+
+1. in powershell, run "Get-Process | where ProcessName -Match python" - this will show you all python processes currently running
+
+2. run "kill <\process id>" - this kills the specified process
 
 
 ## Notes
