@@ -39,7 +39,7 @@ This scripts starts by connecting to the central MySQL database server. It the p
 
 Each peer must also have a way to request files from the other peers. The src/client.py script handles that for us. It start by connecting to the central database then requests all the database entries and displays that information on the console. The user can then choose the index of the file they want to request and confirm this with a Y or n response on the console. The script will then create a socket associate with the associated IP and request the file. It will then listen for the peer server's response, and barring any errors in transmission or IP mismatches, it will recieve the file and store it in the "Downloads" folder. 
 
-### 3. Updating Central DB Timestamp
+### 4. Updating Central DB Timestamp
 
 This script's sole job is to connect with the central MySQL database and update the timestamp for all files stored in the "DistShared" folder. We set this script to push a new timestamp every 15 seconds. 
 
