@@ -3,6 +3,7 @@
 import socket
 import mysql.connector
 import os
+import time
 
 
 #function to connect with our MySQL database
