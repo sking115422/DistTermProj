@@ -46,7 +46,7 @@ def get_local_ip():
 
         for each in tmplist:
             
-            if each [0:3] == '172':    
+            if each [0:2] == '17':    
                 local_ip_vm = each   
     
     except:
