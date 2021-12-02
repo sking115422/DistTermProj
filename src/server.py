@@ -41,13 +41,13 @@ def get_local_ip():
 
         f.close()
 
-        os.system("rm machine_ip.txt")
+        os.system("rm src/machine_ip.txt")
 
         tmplist = tmp.split(" ")
 
         for each in tmplist:
             
-            if each [0:3] == '172':    
+            if each [0:2] == '17':    
                 local_ip_vm = each   
     
     except:
