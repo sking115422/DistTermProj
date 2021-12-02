@@ -32,16 +32,16 @@ def get_local_ip():
     # For broadcast IP if avaliable/necessary
     
     try:
-    
-        os.system("hostname -I > machine_ip.txt ")
         
-        with open('machine_ip.txt') as f:
+        os.system("hostname -I > hostname_i.txt ")
+        
+        with open('hostname_i.txt') as f:
         
             tmp = str(f.readlines()[0])
 
         f.close()
-
-        os.system("rm src/machine_ip.txt")
+        
+        os.system("rm hostname_i.txt")
 
         tmplist = tmp.split(" ")
 

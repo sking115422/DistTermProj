@@ -161,13 +161,13 @@ def main():
         print()
         print("Request for file successfully sent!")
 
-        file_recv = s.recv(1024)
+        file_recv = s.recv(65536)
         
         while True:
             print ("Receiving")
             fin.write(file_recv)
             try:
-                file_recv = s.recv(1024)
+                file_recv = s.recv(65536)
             except:
                 print("All bytes received")
                 break
