@@ -153,6 +153,8 @@ def main():
         print ()
         print ("Connected successfully")
         
+        start_time = time.time()
+        
         s.sendall(bytes("request " + dest_ip + " " + filename, 'utf-8'))
         
         print()
@@ -169,6 +171,12 @@ def main():
                 print("All bytes received")
                 break
             
+        end_time = time.time()
+        exec_time = end_time - start_time
+        
+        print()
+        print ("File transmission time: ", exec_time)
+        
     fin.close()
     
     print ()
