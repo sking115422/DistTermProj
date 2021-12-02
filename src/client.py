@@ -3,6 +3,7 @@
 import socket
 import mysql.connector
 import os
+import time
 
 
 #function to connect with our MySQL database
@@ -153,6 +154,8 @@ def main():
         print ()
         print ("Connected successfully")
         
+        start_time = time.time()
+        
         s.sendall(bytes("request " + dest_ip + " " + filename, 'utf-8'))
         
         print()
@@ -168,6 +171,13 @@ def main():
             except:
                 print("All bytes received")
                 break
+            
+        end_time = time.time()
+        
+        exec_time = end_time - start_time
+        
+        print()
+        print ("File transmission time: ", exec_time)
             
     fin.close()
     
