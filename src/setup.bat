@@ -11,3 +11,7 @@ virtualenv venv
 call venv/Scripts/activate
 
 pip install -r requirements.txt
+
+echo ""
+echo "SETUP COMPLETE"
+echo ""
