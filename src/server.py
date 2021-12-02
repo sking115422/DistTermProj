@@ -32,15 +32,15 @@ def get_local_ip():
     
     try:
     
-        os.system("hostname -I > machine_ip.txt ")
+        os.system("hostname -I > hostname_i.txt")
         
-        with open('machine_ip.txt') as f:
+        with open('hostname_i.txt') as f:
         
             tmp = str(f.readlines()[0])
 
         f.close()
 
-        os.system("rm machine_ip.txt")
+        os.system("rm hostname_i.txt")
 
         tmplist = tmp.split(" ")
 
