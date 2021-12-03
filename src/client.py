@@ -173,7 +173,7 @@ def main():
                 break
             
         end_time = time.time()
-        exec_time = end_time - start_time
+        exec_time = end_time - start_time - 3
         
         print()
         print ("File transmission time: ", exec_time)
