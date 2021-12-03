@@ -28,32 +28,6 @@ def connect_to_db ():
 def get_local_ip():
     
     local_ip_vm = None
-    
-    # For broadcast IP if avaliable/necessary
-    
-    try:
-        
-        os.system("hostname -I > hostname_i.txt ")
-        
-        with open('hostname_i.txt') as f:
-        
-            tmp = str(f.readlines()[0])
-
-        f.close()
-        
-        os.system("rm hostname_i.txt")
-
-        tmplist = tmp.split(" ")
-
-        for each in tmplist:
-            
-            if each [0:2] == '17':    
-                local_ip_vm = each   
-    
-    except:
-        
-        print("hostname -I command not avaliable for this OS") 
-    
         
     #For get IP associated with hostname 
     
