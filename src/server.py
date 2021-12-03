@@ -200,7 +200,7 @@ def main ():
                     
                     try:
                     
-                        data = conn.recv(1024)
+                        data = conn.recv(65536)
                         
                         if data == None:
                             print ()
@@ -222,12 +222,12 @@ def main ():
                     
                         fo = open('../DistShared/' + file_to_send, 'rb')
                         
-                        buf = fo.read(1024)
+                        buf = fo.read(65536)
 
                         while len(buf) != 0:
                             
                             conn.send(buf)
-                            buf = fo.read(1024)
+                            buf = fo.read(65536)
                             print ()
                             print ("Sending: " + file_to_send)
                             
