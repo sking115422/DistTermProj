@@ -27,7 +27,8 @@ def connect_to_db ():
 
 def get_local_ip():
     
-    local_ip_vm = None
+    host_ip = None
+    host = None
         
     #For get IP associated with hostname 
     
@@ -37,11 +38,7 @@ def get_local_ip():
     except:
         print("Unable to get Hostname and IP")
         
-        
-    if local_ip_vm != None:
-        host = local_ip_vm
-    else:
-        host = host_ip
+    host = host_ip
     
     print()
     print("Machine Info: (" + host_name + ")   " + host)
@@ -169,7 +166,7 @@ def main ():
             with conn:
                 
                 machine_ip = None
-                file_to_send = None
+                file_to_send = ''
                 
                 while True:
                     
@@ -185,16 +182,31 @@ def main ():
                         try:
                             data_str = data.decode('utf-8')
                             data_list = data_str.split(" ")
+                            print(data_list)
                             
                         except:
                             print ()
                             print ("bytes are not covertible to ascii")
+                            
+                        
+                        print (data_list[0])
                         
                         if data_list[0] == "request":
                             
                             machine_ip = data_list[1]
-                            file_to_send = data_list[2]
-                    
+                            
+                            print ("test1")
+                            
+                            for z in range(2, len(data_list)):
+                                file_to_send = file_to_send + " " + data_list[z]
+                            
+                            print ("test2")
+                                
+                            file_to_send = file_to_send.rstrip()
+                            file_to_send = file_to_send.lstrip()
+                            
+                            print (file_to_send)
+                            
                         fo = open('../DistShared/' + file_to_send, 'rb')
                         
                         buf = fo.read(65536)
