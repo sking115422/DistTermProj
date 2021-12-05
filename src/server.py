@@ -224,7 +224,7 @@ def main ():
                 
                 file_to_send = ''
                 
-                #Inner loop 1 to keep connection open and receive file request
+                #Inner loop to keep connection open and receive file request
                 while True:
                     
                     try:
