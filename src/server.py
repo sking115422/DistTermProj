@@ -12,7 +12,7 @@ import os
 #HELPER FUNCTIONS
 
 
-#function to connect with our MySQL database
+#Function to connect with our MySQL database
 
 #***YOU WILL NEED TO UPDATE THESE VALUES FOR YOUR OWN CENTRAL DATABASE***
 def connect_to_db ():
