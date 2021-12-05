@@ -59,7 +59,24 @@ To run this project in the way we have implemented it. You must have the followi
 
 * CronJob (other automated task scheduler)
 
-## Running SBCFTP
+## Setting Up Central Database
+
+This part is esstential for the program to run. The peer nodes in the network must be able to access a central database so that they can access so they know what files are avaliable and how to find eachother. There are a million different ways to do this. You definitely do not have to go the same route I did, but for those that would like to I will try to provide a little more guidance. 
+
+As previously mentioned, we used a small 1GB linode server (Nanode as they call it). Below I have provided a link to show how to set this up. 
+
+* [Linode Setup](https://www.youtube.com/watch?v=KEK-ZxrGxMA)
+
+We then installed and set up MySQL server on it and relaxed the security settings as much as was humanly possible. We created one MySQL user called "user" and gave it an empty password so accessing the database was as easy as possible while testing this application. A link to get you started is provided below.
+
+* [MySQL Server Setup](https://www.youtube.com/watch?v=WltqUaqxBH8)
+
+Next, we set up a super simple database schema described above with one table called "peer_list" and 4 column called "ID", "IP", "filename", and "time_stamp".
+
+The rest of the implementation you should be able to figure out from the code in the repo. Remember to change out the database connection information to you own. It will be comment in the code for your reference. 
+
+
+## Running SBCFTP Peer Node
 
 Instructions for WINDOWS machines:
 
