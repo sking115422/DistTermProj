@@ -77,7 +77,7 @@ Instructions for WINDOWS machines:
 
 7. run "python client.py" - this allows you to request files from other nodes 
 
-8. check "Downloads" directory to find you downloaded files 
+8. check "Downloads" directory to find your downloaded files 
 
 
 NOTE: If you have to restart the server, you may get an error saying that process is already running. If this happens, do the following:
@@ -86,6 +86,11 @@ NOTE: If you have to restart the server, you may get an error saying that proces
 
 2. run "kill \<process id\>" - this kills the specified process
 
+\*** IMPORTANT PLEASE READ ***
+
+If you have antivirus like Norton or McAfee installed and active, you may need to disable the firewall they implement. Otherwise, it can prevent the data packets from actually being received by your machine, and the program will fail with a socket time out error. 
+
+Also, similarly if you are trying to run this program to create a peer on a remote VM server (Linode or EC2 instance or similar), it may not work because of the firewall settings imposed by the host company. I had trouble when testing it on my linode VM.
 
 ## Notes
 
