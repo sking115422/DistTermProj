@@ -73,6 +73,8 @@ We then installed and set up MySQL server on it and relaxed the security setting
 
 Next, we set up a super simple database schema described above with one table called "peer_list" and 4 column called "ID", "IP", "filename", and "time_stamp".
 
+Finally, you will need to a function to clean old entries from the central database so that there are no entries present from peers who are no longer online. We have created a python script for this which you can use. You can find it here: src/central_db_cleaner/db.clean.py
+
 The rest of the implementation you should be able to figure out from the code in the repo. Remember to change out the database connection information to you own. It will be comment in the code for your reference. 
 
 
