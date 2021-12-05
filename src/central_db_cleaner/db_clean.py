@@ -36,7 +36,6 @@ print()
 
 
 #Attempting to delete old db entries
-
 try:
      
     #Specifying easten timezone and taking current time
