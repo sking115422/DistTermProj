@@ -1,18 +1,25 @@
 
 
+#IMPORT STATEMENTS
+
 import socket
 import mysql.connector
-import os
 import time
 
 
-#function to connect with our MySQL database
 
+###########################################################################################################
+#HELPER FUNCTIONS
+
+
+#Function to connect with our MySQL database
+
+#***YOU WILL NEED TO UPDATE THESE VALUES FOR YOUR OWN CENTRAL DATABASE***
 def connect_to_db ():
     db = mysql.connector.connect(
-        host='173.230.133.41',
-        user='user',
-        password=''
+        host='173.230.133.41',   #UPDATE
+        user='user',    #UPDATE
+        password=''    #UPDATE
     )
 
     print ()
@@ -21,60 +28,6 @@ def connect_to_db ():
     mycursor = db.cursor()
     
     return db, mycursor
-
-
-
-#Function to return the local IP and hostname
-
-def get_local_ip():
-    try:
-        host_name = socket.gethostname()
-        host_ip = socket.gethostbyname(host_name)
-        print()
-        print("Hostname :  ",host_name)
-        print("IP : ",host_ip)
-    except:
-        print("Unable to get Hostname and IP")
-        
-    return host_ip, host_name
-
-
-#Function to return all files names in DistShared folder
-
-def get_files():
-    
-    files = os.listdir('../DistShared')
-    
-    print()
-    print("Files From Share Drive:")
-    for item in files:
-        print(item)
-        
-    return files
-
-
-
-#Function to push all files from DistShared folder to server
-
-def push_to_server ():
-    
-    db, mycursor = connect_to_db()
-    host_ip, host_name = get_local_ip()
-    files = get_files()
-
-    print()
-    for item in files:
-        
-        mycursor.execute("USE CDS;")
-        
-        sql_cmd = "INSERT INTO peer_list (IP, filename) VALUES ("
-        iVals = ("'" + host_ip + "', '" + item + "'")
-        
-        print("Inserted file:   " + item)
-        
-        mycursor.execute(sql_cmd + iVals + ");")
-        
-        db.commit()
         
 
 #Function to pull all files down from the server and display for user
@@ -104,65 +57,62 @@ def pull_from_server ():
     return pairlist
 
 
-#Function to delete all files from the server associate with the local IP of current machine
 
-def delete_files ():
-    
-    db, mycursor = connect_to_db ()
-    host_ip, host_name = get_local_ip()
-    
-    mycursor.execute("USE CDS")
-    mycursor.execute("DELETE FROM peer_list WHERE IP = '" + host_ip + "';" )
-    
-    db.commit()
-    
-    print ()
-    print ("All files associated with this machines IP have been successfully deleted from the server! ")
-    
+##########################################################################################################################
+#MAIN DRIVER FUNCTION FOR CLIENT
 
-
-#Main driver function for client
 
 def main():
     
+    #Pulling down all central server entries' IP and filename as a list of pairs 
     pairlist = pull_from_server ()
     
+    #Getting user input for index of file they wish to download
     print ()
     print ("Please enter the index number of the file you wish to download!")
     fileindex = int(input())
     
+    #Storing appropriate IP and filename that correspond to user's entry
     dest_ip = pairlist [fileindex - 1][0]
     filename = pairlist [fileindex - 1][1]
     
+    #Ask for user input to confirm their file request selection
     print ()
     print ("You are asking for file: " + filename + " from IP address: " + dest_ip + ". Correct? (Y/n)")
     proceed = input()
     
+    #Terminating program if user accidentally made wrong selection
     if proceed == 'n' or proceed == 'N':
         print("Program terminating...")
         exit()
-        
+    
+    #Creating and opening filename of requested file so we can write to it later
     fin = open("../Downloads/" + filename, "wb")
         
     HOST = dest_ip  # The server's hostname or IP address
-    PORT = 44444        # The port used by the server
+    PORT = 44444   # The port used by the server arbitrarily chosen (must be greater than 1024 as these are restricted)
 
+    #Creating socket
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.settimeout(3)
-        s.connect((HOST, PORT))
+        s.settimeout(3)         #Setting socket timeout to be 3 seconds
+        s.connect((HOST, PORT))     #Connecting to peer server on HOST and PORT above
         
         print ()
         print ("Connected successfully")
         
+        #Grabing timestamp before we send request
         start_time = time.time()
         
+        #Sending request to server
         s.sendall(bytes("request " + dest_ip + " " + filename, 'utf-8'))
         
         print()
         print("Request for file successfully sent!")
 
-        file_recv = s.recv(65536)
+        #Receiving server response
+        file_recv = s.recv(65536)   #65536 is maximum buffer size
         
+        #Continue receiving bytes from server until file is completed downloaded
         while True:
             print ("Receiving")
             fin.write(file_recv)
@@ -171,15 +121,19 @@ def main():
             except:
                 print("All bytes received")
                 break
-            
+        
+        #Grab timestamp after fill finished downloading and calculating total download latency
         end_time = time.time()
-        exec_time = end_time - start_time - 3
+        exec_time = end_time - start_time - 3   #subtracting socket socket time out from latency
         
+        #Printing latency for user
         print()
-        print ("File transmission time: ", exec_time)
+        print ("File download time: ", exec_time)
         
+    #Closing file
     fin.close()
     
+    #Alerting user of successful download
     print ()
     print ("Successfully downloaded file: " + filename + " !")
     print ()
