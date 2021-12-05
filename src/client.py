@@ -94,6 +94,7 @@ def main():
 
     #Creating socket
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        
         s.settimeout(3)         #Setting socket timeout to be 3 seconds
         s.connect((HOST, PORT))     #Connecting to peer server on HOST and PORT above
         
