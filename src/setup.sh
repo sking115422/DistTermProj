@@ -12,6 +12,8 @@
 
 #Installs all project dependencies
 
+
+
 rm -r venv
 
 mkdir ../DistShared
