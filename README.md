@@ -78,6 +78,8 @@ The rest of the implementation you should be able to figure out from the code in
 
 ## Running SBCFTP Peer Node
 
+Once you have the central database setup, you can run the code in the repo in the following way to setup peer nodes and form a network.
+
 Instructions for WINDOWS machines:
 
 1. clone this repo to desired directory
