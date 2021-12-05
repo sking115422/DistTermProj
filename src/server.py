@@ -194,7 +194,7 @@ def main ():
             with conn:
                 
                 machine_ip = None
-                file_to_send = None
+                file_to_send = ''
                 
                 while True:
                     
@@ -218,8 +218,13 @@ def main ():
                         if data_list[0] == "request":
                             
                             machine_ip = data_list[1]
-                            file_to_send = data_list[2]
-                    
+                            
+                            for z in range(2, len(data_list)):
+                                file_to_send = file_to_send + " " + data_list[z]
+                            
+                            file_to_send = file_to_send.rstrip()
+                            file_to_send = file_to_send.lstrip()
+                            
                         fo = open('../DistShared/' + file_to_send, 'rb')
                         
                         buf = fo.read(65536)
